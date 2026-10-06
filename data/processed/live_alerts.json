@@ -1,0 +1,162 @@
+[
+  {
+    "timestamp": "2026-10-06 13:31:31",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.0017,
+    "estimated_multiplier": 0.74,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 32,
+      "target_zone_name": "Loop",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:31",
+    "zone_id": 53,
+    "zone_name": "West Pullman",
+    "surge_probability": 0.0019,
+    "estimated_multiplier": 0.78,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 53,
+      "target_zone_name": "West Pullman",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:31",
+    "zone_id": 1,
+    "zone_name": "Rogers Park",
+    "surge_probability": 0.0554,
+    "estimated_multiplier": 0.74,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 1,
+      "target_zone_name": "Rogers Park",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:30",
+    "zone_id": 38,
+    "zone_name": "Grand Boulevard",
+    "surge_probability": 0.0078,
+    "estimated_multiplier": 0.75,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 38,
+      "target_zone_name": "Grand Boulevard",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:30",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.0013,
+    "estimated_multiplier": 0.79,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 32,
+      "target_zone_name": "Loop",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:30",
+    "zone_id": 28,
+    "zone_name": "Near West Side",
+    "surge_probability": 0.0173,
+    "estimated_multiplier": 0.78,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 28,
+      "target_zone_name": "Near West Side",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:30",
+    "zone_id": 76,
+    "zone_name": "O'Hare International Airport",
+    "surge_probability": 0.0037,
+    "estimated_multiplier": 0.79,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 76,
+      "target_zone_name": "O'Hare International Airport",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:30",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.0496,
+    "estimated_multiplier": 0.81,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 32,
+      "target_zone_name": "Loop",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:30",
+    "zone_id": 38,
+    "zone_name": "Grand Boulevard",
+    "surge_probability": 0.0058,
+    "estimated_multiplier": 0.8,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 38,
+      "target_zone_name": "Grand Boulevard",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  },
+  {
+    "timestamp": "2026-10-06 13:31:30",
+    "zone_id": 8,
+    "zone_name": "Near North Side",
+    "surge_probability": 0.0038,
+    "estimated_multiplier": 0.75,
+    "is_surge_warning": false,
+    "dispatch_directive": {
+      "status": "BALANCED",
+      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "target_zone": 8,
+      "target_zone_name": "Near North Side",
+      "drivers_needed": 0,
+      "transfer_plan": []
+    }
+  }
+]
