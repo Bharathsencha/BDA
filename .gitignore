@@ -1,0 +1,30 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints
+
+# Maven & Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Data & Models (Keep raw sample script, ignore massive generated CSV dumps if needed)
+data/raw/year=*
+data/raw/*.csv
+data/processed/*.csv
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
