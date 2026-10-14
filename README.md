@@ -34,6 +34,7 @@ An end-to-end Big Data system to predict ride-hailing surge multipliers (>= 1.5x
 
 ```
 bda/
+├── Makefile                          # Simple commands: make, make run, make clean
 ├── docker-compose.yml                # Docker Compose for Apache Kafka and Zookeeper
 ├── pom.xml                           # Maven build configuration for Java Hadoop MapReduce
 ├── src/main/java/com/bda/surge/
@@ -62,7 +63,7 @@ bda/
 ├── streaming_inference/
 │   └── stream_processor.py           # Real-time streaming inference worker and alert generator
 ├── app/
-│   └── dashboard.py                  # Advanced Streamlit Predictive Dispatch Control Center
+│   └── dashboard.py                  # Streamlit 4-Tab Predictive Dispatch Control Center
 ├── scripts/
 │   ├── download_data.py              # 12-Month Chicago data generator & Socrata portal fetcher
 │   ├── stage_hdfs.sh                 # HDFS partitioned data loader script
@@ -76,32 +77,46 @@ bda/
 
 ## 4. Machine Learning Benchmark Results
 
-Trained on **131,250 spatio-temporal feature instances** across all 12 calendar months and all 77 Chicago community areas. Evaluated on an **out-of-time temporal test set (October - December 2023 | 32,846 instances)** with **zero target leakage** (no `avg_fare` or contemporaneous surge multipliers in the feature space):
+Trained on **131,450 spatio-temporal feature instances** across all 12 calendar months and all 77 Chicago community areas. Evaluated on an **out-of-time temporal test set (October - December 2023 | 32,873 instances)** with **zero target leakage** (no `avg_fare` or contemporaneous surge multipliers in the feature space):
 
 | Model Architecture | ROC-AUC Score | F1 Score (0.50) | Recall (Standard 0.50) | Recall (Tuned Cutoff 0.35) | Precision (0.50) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Decision Tree (Baseline)** | **0.8325** | **0.23** | **70.06%** | **91.80%** | **13.00%** |
-| **Random Forest (Ensemble)** | **0.8290** | **0.23** | **67.63%** | **88.37%** | **14.00%** |
-| **Gradient Boosting** | **0.8497** | **0.05** | **2.70%** | **15.20%** | **28.00%** |
-| **Logistic Regression** | **0.7661** | **0.18** | **64.74%** | **89.10%** | **10.50%** |
+| **Random Forest (Ensemble)** | **0.8124** | **0.32** | **65.19%** | **73.24%** | **21.23%** |
+| **Decision Tree (Baseline)** | **0.8194** | **0.32** | **66.72%** | **69.77%** | **21.15%** |
+| **Gradient Boosting** | **0.8629** | **0.13** | **7.10%** | **49.53%** | **55.33%** |
+| **Logistic Regression** | **0.7463** | **0.22** | **56.68%** | **76.71%** | **13.97%** |
 
-*Key Operational Takeaway*: By tuning the classification threshold to $\tau = 0.35$, the Decision Tree and Random Forest classifiers achieve **$\ge 88-92\%$ Recall**, ensuring the dispatch engine detects impending demand surges with 20 minutes of advance notice so idle vehicles can be proactively repositioned.
+*Key Operational Takeaways*:
+* Tuning the decision threshold to 0.35 captures **70% to 76% of all impending surges 20 minutes prior to their onset**, giving the dispatch engine sufficient lead time to mobilize surrounding idle fleets.
+* Gradient Boosting yields the highest raw discrimination (ROC-AUC 0.8629), while Random Forest delivers balanced precision and recall across high-density commercial hubs and residential zones.
+* Physical supply-demand deficit modeling ensures that surplus incoming drop-offs consistently suppress surge pricing risk, aligning algorithmic predictions with transportation market dynamics.
 
 ### Feature Importance Ranking (Pre-Surge Operational Signals)
-1. **`is_rush_hour`** (24.03%) - High-frequency commuting windows (7-9 AM, 4-7 PM)
-2. **`demand_trips`** (19.74%) - Absolute pickup count in current 15-minute window
-3. **`zone_id`** (14.76%) - Commercial vs residential spatial characteristics
-4. **`hour`** (11.10%) - Diurnal transit patterns
-5. **`day_of_week`** (8.37%) - Weekday commuting vs weekend entertainment
-6. **`avg_speed_mph`** (7.99%) - Congestion index (traffic slowdowns precede surge)
-7. **`inflow_outflow_ratio`** (5.96%) - Vehicle supply balance (arrivals vs departures)
-8. **`dropoff_trips`** (4.05%) - Drop-off volume supplying available drivers
-9. **`demand_momentum`** (2.92%) - Demand acceleration ($\Delta \text{trips} / \Delta t$)
-10. **`is_weekend`** (1.08%) - Weekend night activity flag
+1. **`is_rush_hour`** (32.43%) - Commuter peak hours (7-9 AM, 4-7 PM weekdays)
+2. **`hour`** (14.54%) - Diurnal transportation activity cycles
+3. **`day_of_week`** (10.61%) - Commuting rhythms vs weekend entertainment trips
+4. **`zone_id`** (10.55%) - Spatial hub baseline (commercial business district vs residential)
+5. **`net_deficit`** (9.14%) - Local demand deficit (`pickups - dropoffs`)
+6. **`inflow_outflow_ratio`** (7.65%) - Ratio of incoming vehicle supply to ride requests
+7. **`avg_speed_mph`** (4.55%) - Real-time traffic congestion index
+8. **`dropoff_trips`** (4.06%) - Incoming vehicle arrivals supplying available drivers
+9. **`demand_trips`** (3.31%) - Immediate 15-minute pickup demand count
+10. **`is_weekend`** (1.89%) - Weekend night leisure indicator
+11. **`demand_momentum`** (1.27%) - Demand acceleration rate (delta trips / delta t)
 
 ---
 
-## 5. Execution Instructions
+## 5. Interactive Operations Dashboard
+
+The web interface (`app/dashboard.py`) provides a four-tab executive control center:
+1. **Live Predictive Dispatch & Map**: Real-time 20-minute forward surge warnings, risk probability gauge meter, physical supply-demand deficit balance, and an interactive 77-community zone risk map.
+2. **Fleet Supply & Rebalancing Optimizer**: Automated solver calculating vehicle transfer quotas from adjacent donor zones, transit ETAs, and incentive bonuses to preemptively balance supply deficits.
+3. **Multi-Model Benchmark Lab**: Comparative analysis showing model ROC curves, threshold tuning impacts, confusion matrices, and feature importance rankings.
+4. **Kafka Real-Time Stream Monitor**: Real-time event streaming telemetry, live batch simulation triggers, and an event ticker logging 20-minute forward surge alerts emitted to Kafka.
+
+---
+
+## 6. Execution Instructions
 
 ### Quick Start via Makefile
 ```bash
@@ -115,22 +130,20 @@ make run
 make clean
 ```
 
-### Alternative Direct Scripts
+### Direct Script Execution
 ```bash
-# Run complete end-to-end pipeline:
+# Run complete end-to-end pipeline via bash:
 bash scripts/run_full_system.sh
 
-# Or directly via Python:
+# Or directly via Python orchestrator:
 ./venv/bin/python scripts/run_groundwork_demo.py
-```
 
-### 2. Launch the Interactive Operations Dashboard
-```bash
+# Launch Streamlit dashboard directly:
 ./venv/bin/streamlit run app/dashboard.py
 ```
-Open in browser at: `http://localhost:8501`
+Open dashboard in browser at: `http://localhost:8501`
 
-### 3. Start Apache Kafka & Zookeeper via Docker
+### Apache Kafka & Zookeeper via Docker
 ```bash
 # Start background Kafka broker:
 docker compose up -d
@@ -142,7 +155,7 @@ docker compose ps
 ./venv/bin/python kafka/producer.py --events 100 --delay 0.05
 ```
 
-### 4. Build and Run Native Java MapReduce on Hadoop
+### Native Java MapReduce on Hadoop
 ```bash
 # Compile and package Shaded Uber JAR via Maven:
 docker run --rm -v "$(pwd)":/app -w /app maven:3.9-eclipse-temurin-11 mvn clean package -DskipTests
