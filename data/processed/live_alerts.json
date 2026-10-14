@@ -1,732 +1,572 @@
 [
   {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 68,
-    "zone_name": "Englewood",
-    "surge_probability": 0.2556,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
+    "timestamp": "2026-10-14 19:00:56",
+    "zone_id": 76,
+    "zone_name": "O'Hare International Airport",
+    "surge_probability": 0.8509,
+    "estimated_multiplier": 1.55,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 3,
     "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 68,
-      "target_zone_name": "Englewood",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to O'Hare International Airport within 15 minutes.",
+      "target_zone": 76,
+      "target_zone_name": "O'Hare International Airport",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 9,
+          "donor_zone_name": "Edison Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 5.29,
+          "estimated_transit_minutes": 16,
+          "incentive_bonus_per_driver": 10.11
+        },
+        {
+          "donor_zone_id": 10,
+          "donor_zone_name": "Norwood Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 5.23,
+          "estimated_transit_minutes": 16,
+          "incentive_bonus_per_driver": 10.04
+        }
+      ],
+      "projected_multiplier_reduction": 0.35
     }
   },
   {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 34,
-    "zone_name": "Armour Square",
-    "surge_probability": 0.2564,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 34,
-      "target_zone_name": "Armour Square",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 33,
-    "zone_name": "Near South Side",
-    "surge_probability": 0.267,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 4,
-    "inflow_outflow_ratio": 0.75,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 33,
-      "target_zone_name": "Near South Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 8,
-    "zone_name": "Near North Side",
-    "surge_probability": 0.2379,
-    "estimated_multiplier": 1.04,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 6,
-    "inflow_outflow_ratio": 0.33,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 8,
-      "target_zone_name": "Near North Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:02",
+    "timestamp": "2026-10-14 19:00:56",
     "zone_id": 28,
     "zone_name": "Near West Side",
-    "surge_probability": 0.3047,
-    "estimated_multiplier": 2.24,
-    "is_surge_warning": false,
+    "surge_probability": 0.7381,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 4,
+    "inflow_outflow_ratio": 0.5,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near West Side within 15 minutes.",
+      "target_zone": 28,
+      "target_zone_name": "Near West Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        },
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.34,
+          "estimated_transit_minutes": 7,
+          "incentive_bonus_per_driver": 6.42
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:00:56",
+    "zone_id": 4,
+    "zone_name": "Lincoln Square",
+    "surge_probability": 0.5348,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 3,
     "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 28,
-      "target_zone_name": "Near West Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Lincoln Square within 15 minutes.",
+      "target_zone": 4,
+      "target_zone_name": "Lincoln Square",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 5,
+          "donor_zone_name": "North Center",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.31,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.14
+        },
+        {
+          "donor_zone_id": 16,
+          "donor_zone_name": "Irving Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.66,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.57
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 56,
-    "zone_name": "Garfield Ridge (Midway Airport)",
-    "surge_probability": 0.349,
+    "timestamp": "2026-10-14 19:00:56",
+    "zone_id": 33,
+    "zone_name": "Near South Side",
+    "surge_probability": 0.8315,
     "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 3,
     "inflow_outflow_ratio": 1.33,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 56,
-      "target_zone_name": "Garfield Ridge (Midway Airport)",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 45,
-    "zone_name": "Avalon Park",
-    "surge_probability": 0.2554,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 45,
-      "target_zone_name": "Avalon Park",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 20,
-    "zone_name": "Hermosa",
-    "surge_probability": 0.2341,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 20,
-      "target_zone_name": "Hermosa",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 22,
-    "zone_name": "Logan Square",
-    "surge_probability": 0.2269,
-    "estimated_multiplier": 1.15,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 22,
-      "target_zone_name": "Logan Square",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:02",
-    "zone_id": 7,
-    "zone_name": "Lincoln Park",
-    "surge_probability": 0.2584,
-    "estimated_multiplier": 1.28,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 7,
-      "target_zone_name": "Lincoln Park",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:01",
-    "zone_id": 33,
-    "zone_name": "Near South Side",
-    "surge_probability": 0.2892,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 1.0,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near South Side within 15 minutes.",
       "target_zone": 33,
       "target_zone_name": "Near South Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 34,
+          "donor_zone_name": "Armour Square",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.2,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 5.0
+        },
+        {
+          "donor_zone_id": 35,
+          "donor_zone_name": "Douglas",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.57,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.46
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-14 15:57:01",
+    "timestamp": "2026-10-14 19:00:56",
     "zone_id": 8,
     "zone_name": "Near North Side",
-    "surge_probability": 0.249,
-    "estimated_multiplier": 1.34,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 5,
-    "inflow_outflow_ratio": 0.4,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 8,
-      "target_zone_name": "Near North Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:01",
-    "zone_id": 8,
-    "zone_name": "Near North Side",
-    "surge_probability": 0.2531,
+    "surge_probability": 0.7994,
     "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 4,
-    "inflow_outflow_ratio": 0.5,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 8,
-      "target_zone_name": "Near North Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:57:01",
-    "zone_id": 8,
-    "zone_name": "Near North Side",
-    "surge_probability": 0.2574,
-    "estimated_multiplier": 2.11,
-    "is_surge_warning": false,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 3,
     "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near North Side within 15 minutes.",
       "target_zone": 8,
       "target_zone_name": "Near North Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 7,
+          "donor_zone_name": "Lincoln Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.77,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.71
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-14 15:57:01",
-    "zone_id": 72,
-    "zone_name": "Beverly",
-    "surge_probability": 0.256,
+    "timestamp": "2026-10-14 19:00:56",
+    "zone_id": 53,
+    "zone_name": "West Pullman",
+    "surge_probability": 0.7141,
     "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 3,
     "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 72,
-      "target_zone_name": "Beverly",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to West Pullman within 15 minutes.",
+      "target_zone": 53,
+      "target_zone_name": "West Pullman",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 75,
+          "donor_zone_name": "Morgan Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 2.0,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 6.0
+        },
+        {
+          "donor_zone_id": 54,
+          "donor_zone_name": "Riverdale",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.03,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 6.04
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 38,
-    "zone_name": "Grand Boulevard",
-    "surge_probability": 0.2863,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 38,
-      "target_zone_name": "Grand Boulevard",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 22,
-    "zone_name": "Logan Square",
-    "surge_probability": 0.2562,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
+    "timestamp": "2026-10-14 19:00:56",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.7685,
+    "estimated_multiplier": 1.18,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 4,
     "inflow_outflow_ratio": 0.75,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 22,
-      "target_zone_name": "Logan Square",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Loop within 15 minutes.",
+      "target_zone": 32,
+      "target_zone_name": "Loop",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 56,
-    "zone_name": "Garfield Ridge (Midway Airport)",
-    "surge_probability": 0.3329,
+    "timestamp": "2026-10-14 19:00:56",
+    "zone_id": 31,
+    "zone_name": "Lower West Side",
+    "surge_probability": 0.7916,
     "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Lower West Side within 15 minutes.",
+      "target_zone": 31,
+      "target_zone_name": "Lower West Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.39,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.24
+        },
+        {
+          "donor_zone_id": 60,
+          "donor_zone_name": "Bridgeport",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.47,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.34
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:00:56",
+    "zone_id": 36,
+    "zone_name": "Oakland",
+    "surge_probability": 0.6011,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Oakland within 15 minutes.",
+      "target_zone": 36,
+      "target_zone_name": "Oakland",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 39,
+          "donor_zone_name": "Kenwood",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.03,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.79
+        },
+        {
+          "donor_zone_id": 38,
+          "donor_zone_name": "Grand Boulevard",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.19,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.99
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:00:55",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.8176,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 3,
     "inflow_outflow_ratio": 1.0,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 56,
-      "target_zone_name": "Garfield Ridge (Midway Airport)",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 62,
-    "zone_name": "West Elsdon",
-    "surge_probability": 0.296,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 62,
-      "target_zone_name": "West Elsdon",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 12,
-    "zone_name": "Forest Glen",
-    "surge_probability": 0.2709,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 12,
-      "target_zone_name": "Forest Glen",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 22,
-    "zone_name": "Logan Square",
-    "surge_probability": 0.2723,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 1.0,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 22,
-      "target_zone_name": "Logan Square",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 27,
-    "zone_name": "East Garfield Park",
-    "surge_probability": 0.2798,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 27,
-      "target_zone_name": "East Garfield Park",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 76,
-    "zone_name": "O'Hare International Airport",
-    "surge_probability": 0.2527,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 4,
-    "inflow_outflow_ratio": 0.5,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 76,
-      "target_zone_name": "O'Hare International Airport",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 32,
-    "zone_name": "Loop",
-    "surge_probability": 0.2622,
-    "estimated_multiplier": 1.07,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 5,
-    "inflow_outflow_ratio": 0.4,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Loop within 15 minutes.",
       "target_zone": 32,
       "target_zone_name": "Loop",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 24,
-    "zone_name": "West Town",
-    "surge_probability": 0.2911,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 24,
-      "target_zone_name": "West Town",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 76,
-    "zone_name": "O'Hare International Airport",
-    "surge_probability": 0.3234,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 76,
-      "target_zone_name": "O'Hare International Airport",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:53",
-    "zone_id": 32,
-    "zone_name": "Loop",
-    "surge_probability": 0.2948,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 4,
-    "inflow_outflow_ratio": 0.5,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 32,
-      "target_zone_name": "Loop",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:52",
+    "timestamp": "2026-10-14 19:00:55",
     "zone_id": 7,
     "zone_name": "Lincoln Park",
-    "surge_probability": 0.2446,
+    "surge_probability": 0.8156,
     "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
+    "is_surge_warning": true,
     "horizon_minutes": 20,
     "demand_trips": 3,
     "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Lincoln Park within 15 minutes.",
       "target_zone": 7,
       "target_zone_name": "Lincoln Park",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 6,
+          "donor_zone_name": "Lake View",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.54,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.42
+        },
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.77,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.71
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-14 15:53:52",
-    "zone_id": 32,
-    "zone_name": "Loop",
-    "surge_probability": 0.3111,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 32,
-      "target_zone_name": "Loop",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-14 15:53:52",
-    "zone_id": 33,
-    "zone_name": "Near South Side",
-    "surge_probability": 0.2533,
-    "estimated_multiplier": 1.0,
-    "is_surge_warning": false,
-    "horizon_minutes": 20,
-    "demand_trips": 3,
-    "inflow_outflow_ratio": 0.67,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 33,
-      "target_zone_name": "Near South Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-06 13:31:31",
-    "zone_id": 32,
-    "zone_name": "Loop",
-    "surge_probability": 0.0017,
-    "estimated_multiplier": 0.74,
-    "is_surge_warning": false,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 32,
-      "target_zone_name": "Loop",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-06 13:31:31",
-    "zone_id": 53,
-    "zone_name": "West Pullman",
-    "surge_probability": 0.0019,
-    "estimated_multiplier": 0.78,
-    "is_surge_warning": false,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 53,
-      "target_zone_name": "West Pullman",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-06 13:31:31",
-    "zone_id": 1,
-    "zone_name": "Rogers Park",
-    "surge_probability": 0.0554,
-    "estimated_multiplier": 0.74,
-    "is_surge_warning": false,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 1,
-      "target_zone_name": "Rogers Park",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-06 13:31:30",
-    "zone_id": 38,
-    "zone_name": "Grand Boulevard",
-    "surge_probability": 0.0078,
-    "estimated_multiplier": 0.75,
-    "is_surge_warning": false,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 38,
-      "target_zone_name": "Grand Boulevard",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-06 13:31:30",
-    "zone_id": 32,
-    "zone_name": "Loop",
-    "surge_probability": 0.0013,
-    "estimated_multiplier": 0.79,
-    "is_surge_warning": false,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 32,
-      "target_zone_name": "Loop",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-06 13:31:30",
+    "timestamp": "2026-10-14 19:00:55",
     "zone_id": 28,
     "zone_name": "Near West Side",
-    "surge_probability": 0.0173,
-    "estimated_multiplier": 0.78,
-    "is_surge_warning": false,
+    "surge_probability": 0.8027,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near West Side within 15 minutes.",
       "target_zone": 28,
       "target_zone_name": "Near West Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        },
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.34,
+          "estimated_transit_minutes": 7,
+          "incentive_bonus_per_driver": 6.42
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-06 13:31:30",
-    "zone_id": 76,
-    "zone_name": "O'Hare International Airport",
-    "surge_probability": 0.0037,
-    "estimated_multiplier": 0.79,
-    "is_surge_warning": false,
+    "timestamp": "2026-10-14 19:00:55",
+    "zone_id": 49,
+    "zone_name": "Roseland",
+    "surge_probability": 0.666,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 76,
-      "target_zone_name": "O'Hare International Airport",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Roseland within 15 minutes.",
+      "target_zone": 49,
+      "target_zone_name": "Roseland",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 50,
+          "donor_zone_name": "Pullman",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.35,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.19
+        },
+        {
+          "donor_zone_id": 73,
+          "donor_zone_name": "Washington Heights",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.38,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.22
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-06 13:31:30",
-    "zone_id": 32,
-    "zone_name": "Loop",
-    "surge_probability": 0.0496,
-    "estimated_multiplier": 0.81,
-    "is_surge_warning": false,
+    "timestamp": "2026-10-14 19:00:55",
+    "zone_id": 58,
+    "zone_name": "Brighton Park",
+    "surge_probability": 0.7708,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 32,
-      "target_zone_name": "Loop",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Brighton Park within 15 minutes.",
+      "target_zone": 58,
+      "target_zone_name": "Brighton Park",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 59,
+          "donor_zone_name": "McKinley Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.6,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.5
+        },
+        {
+          "donor_zone_id": 63,
+          "donor_zone_name": "Gage Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.65,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.56
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   },
   {
-    "timestamp": "2026-10-06 13:31:30",
-    "zone_id": 38,
-    "zone_name": "Grand Boulevard",
-    "surge_probability": 0.0058,
-    "estimated_multiplier": 0.8,
-    "is_surge_warning": false,
+    "timestamp": "2026-10-14 19:00:55",
+    "zone_id": 61,
+    "zone_name": "New City",
+    "surge_probability": 0.7461,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
     "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 38,
-      "target_zone_name": "Grand Boulevard",
-      "drivers_needed": 0,
-      "transfer_plan": []
-    }
-  },
-  {
-    "timestamp": "2026-10-06 13:31:30",
-    "zone_id": 8,
-    "zone_name": "Near North Side",
-    "surge_probability": 0.0038,
-    "estimated_multiplier": 0.75,
-    "is_surge_warning": false,
-    "dispatch_directive": {
-      "status": "BALANCED",
-      "message": "Demand and supply are currently balanced. No driver repositioning required.",
-      "target_zone": 8,
-      "target_zone_name": "Near North Side",
-      "drivers_needed": 0,
-      "transfer_plan": []
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to New City within 15 minutes.",
+      "target_zone": 61,
+      "target_zone_name": "New City",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 37,
+          "donor_zone_name": "Fuller Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.17,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.96
+        },
+        {
+          "donor_zone_id": 59,
+          "donor_zone_name": "McKinley Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.87,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.84
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
     }
   }
 ]

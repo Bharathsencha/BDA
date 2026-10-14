@@ -103,13 +103,24 @@ Trained on **131,250 spatio-temporal feature instances** across all 12 calendar 
 
 ## 5. Execution Instructions
 
-### 1. Run Complete End-to-End Pipeline
-Executes data verification, HDFS partition checks, MapReduce feature extraction, multi-model training, and real-time streaming evaluation:
+### Quick Start via Makefile
 ```bash
-bash scripts/run_full_system.sh
+# Execute complete end-to-end pipeline (Data Ingestion -> MapReduce -> ML Training -> Streaming):
+make
+
+# Launch the interactive operations dashboard:
+make run
+
+# Clean build artifacts, temporary files, and Python cache:
+make clean
 ```
-Or directly via Python:
+
+### Alternative Direct Scripts
 ```bash
+# Run complete end-to-end pipeline:
+bash scripts/run_full_system.sh
+
+# Or directly via Python:
 ./venv/bin/python scripts/run_groundwork_demo.py
 ```
 
