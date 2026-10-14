@@ -11,6 +11,7 @@ target/
 *.jar
 *.war
 *.ear
+dependency-reduced-pom.xml
 
 # Data & Models (Keep raw sample script, ignore massive generated CSV dumps if needed)
 data/raw/year=*

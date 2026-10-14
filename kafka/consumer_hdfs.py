@@ -59,13 +59,36 @@ class HdfsBatchSink:
 
         self.buffer.clear()
 
-def consume_and_sink(max_messages: int = 50, timeout_ms: int = 5000):
+def is_kafka_broker_online(bootstrap_servers: str = KAFKA_BOOTSTRAP_SERVERS, timeout: float = 0.5) -> bool:
+    try:
+        import socket
+        host, port = bootstrap_servers.split(":")
+        with socket.create_connection((host, int(port)), timeout=timeout):
+            return True
+    except Exception:
+        return False
+
+def consume_and_sink(max_messages: int = 50, timeout_ms: int = 3000):
     """Consumes ride events from Kafka and writes to storage sink."""
-    if not KAFKA_AVAILABLE:
-        print("[!] kafka-python not installed. Running simulated sink.")
+    sink = HdfsBatchSink(RAW_DATA_DIR, batch_size=25)
+    if not KAFKA_AVAILABLE or not is_kafka_broker_online():
+        print("[*] Live Kafka broker offline. Running simulated local sink batch.")
+        # Create a small simulated batch from raw dataset to demonstrate sink
+        raw_csv = RAW_DATA_DIR / "chicago_taxi_trips_12mo.csv"
+        if raw_csv.exists():
+            df = pd.read_csv(raw_csv).sample(min(20, max_messages))
+            for _, row in df.iterrows():
+                sink.add_event({
+                    "timestamp": row.get("trip_start_timestamp"),
+                    "pickup_community_area": row.get("pickup_community_area"),
+                    "dropoff_community_area": row.get("dropoff_community_area"),
+                    "fare": row.get("fare"),
+                    "trip_miles": row.get("trip_miles")
+                })
+            sink.flush()
+            print(f"[] Staged {len(df)} simulated records to partitioned storage.")
         return
 
-    sink = HdfsBatchSink(RAW_DATA_DIR, batch_size=25)
     try:
         consumer = KafkaConsumer(
             KAFKA_TOPIC_RIDE_REQUESTS,
@@ -74,7 +97,8 @@ def consume_and_sink(max_messages: int = 50, timeout_ms: int = 5000):
             enable_auto_commit=True,
             group_id=KAFKA_CONSUMER_GROUP,
             value_deserializer=lambda x: json.loads(x.decode('utf-8')),
-            consumer_timeout_ms=timeout_ms
+            consumer_timeout_ms=timeout_ms,
+            api_version=(2, 5, 0)
         )
         print(f"[*] Subscribed to Kafka topic '{KAFKA_TOPIC_RIDE_REQUESTS}'. Listening for incoming rides...")
         

@@ -8,8 +8,8 @@ import java.io.IOException;
 /**
  * SurgeReducer:
  * Aggregates all ride trips for a specific (Zone, 15-Minute Window).
- * Computes demand pressure (trip count), velocity, average surge multiplier,
- * and produces the binary classification target (is_surge_above_1_5x).
+ * Computes demand pressure, vehicle inflow/outflow balance, velocity index,
+ * and outputs the leak-free classification vector.
  */
 public class SurgeReducer extends Reducer<Text, Text, Text, Text> {
 
@@ -18,10 +18,9 @@ public class SurgeReducer extends Reducer<Text, Text, Text, Text> {
 
     @Override
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        int tripCount = 0;
-        double sumFare = 0.0;
-        double sumMiles = 0.0;
-        double sumSeconds = 0.0;
+        int pickupCount = 0;
+        int dropoffCount = 0;
+        double sumSpeed = 0.0;
         double sumSurgeMultiplier = 0.0;
 
         for (Text val : values) {
@@ -31,45 +30,42 @@ public class SurgeReducer extends Reducer<Text, Text, Text, Text> {
             }
 
             try {
-                double fare = Double.parseDouble(parts[0]);
+                String eventType = parts[0];
                 double miles = Double.parseDouble(parts[1]);
                 double seconds = Double.parseDouble(parts[2]);
                 double surge = Double.parseDouble(parts[3]);
+                double speed = (seconds > 0) ? (miles / (seconds / 3600.0)) : 18.0;
 
-                sumFare += fare;
-                sumMiles += miles;
-                sumSeconds += seconds;
-                sumSurgeMultiplier += surge;
-                tripCount++;
+                if ("P".equals(eventType)) {
+                    pickupCount++;
+                    sumSpeed += speed;
+                    sumSurgeMultiplier += surge;
+                } else if ("D".equals(eventType)) {
+                    dropoffCount++;
+                }
             } catch (NumberFormatException ignored) {
             }
         }
 
-        if (tripCount == 0) {
+        if (pickupCount == 0 && dropoffCount == 0) {
             return;
         }
 
-        double avgFare = sumFare / tripCount;
-        double avgMiles = sumMiles / tripCount;
-        double avgSeconds = sumSeconds / tripCount;
-        double avgSurgeMultiplier = sumSurgeMultiplier / tripCount;
+        double avgSpeedMph = (pickupCount > 0) ? (sumSpeed / pickupCount) : 18.0;
+        double avgSurge = (pickupCount > 0) ? (sumSurgeMultiplier / pickupCount) : 1.0;
+        double inflowOutflowRatio = (double) dropoffCount / Math.max(1, pickupCount);
+        inflowOutflowRatio = Math.round(inflowOutflowRatio * 100.0) / 100.0;
 
-        // Speed in miles per hour (avoid divide by zero)
-        double totalHours = sumSeconds / 3600.0;
-        double avgSpeedMph = (totalHours > 0) ? (sumMiles / totalHours) : 0.0;
-
-        // Target Label: 1 if surge multiplier >= 1.5, else 0
-        int isSurgeAbove15x = (avgSurgeMultiplier >= SURGE_THRESHOLD) ? 1 : 0;
+        // Binary Classification Target: 1 if surge multiplier >= 1.5, else 0
+        int isSurgeAbove15x = (avgSurge >= SURGE_THRESHOLD) ? 1 : 0;
 
         // Output CSV Line Format:
-        // demand_trips,avg_fare,avg_miles,avg_seconds,avg_speed_mph,avg_surge_multiplier,is_surge_above_1_5x
-        String result = String.format("%d,%.2f,%.2f,%.1f,%.2f,%.2f,%d",
-                tripCount,
-                avgFare,
-                avgMiles,
-                avgSeconds,
+        // demand_trips,dropoff_trips,inflow_outflow_ratio,avg_speed_mph,is_surge_above_1_5x
+        String result = String.format("%d,%d,%.2f,%.2f,%d",
+                pickupCount,
+                dropoffCount,
+                inflowOutflowRatio,
                 avgSpeedMph,
-                avgSurgeMultiplier,
                 isSurgeAbove15x
         );
 

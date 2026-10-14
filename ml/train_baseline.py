@@ -1,6 +1,7 @@
 """
-Machine Learning Baseline: Decision Tree & Random Forest Classifiers
-Predicts 20-minute advance surge multiplier (> 1.5x) based on MapReduce aggregated features.
+Machine Learning Baseline: Decision Tree & Random Forest Surge Classifiers.
+Predicts 20-minute advance surge multiplier (> 1.5x) based on leak-free MapReduce features.
+Implements temporal train/test split (Jan-Sep Train vs Oct-Dec Test) and threshold tuning.
 """
 import sys
 import os
@@ -8,72 +9,83 @@ import joblib
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier, export_text
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, roc_auc_score, confusion_matrix
+from sklearn.metrics import classification_report, roc_auc_score, confusion_matrix, precision_recall_fscore_support
 
-# Add project root to sys.path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.append(str(PROJECT_ROOT))
 from config.config import PROCESSED_DATA_DIR, MODEL_DIR
 
-def train_models(data_path: Path = PROCESSED_DATA_DIR / "features_labels.csv"):
+def train_baseline_models(data_path: Path = PROCESSED_DATA_DIR / "features_labels.csv"):
     if not data_path.exists():
         print(f"[!] Feature dataset not found at {data_path}. Run MapReduce first!")
         return
 
     print("=================================================================")
     print("  Training Decision Tree & Random Forest Surge Classifiers")
+    print("  (20-Minute Forward Lookahead | Zero Target Leakage)")
     print("=================================================================")
 
     df = pd.read_csv(data_path)
-    print(f"[*] Loaded {len(df)} spatio-temporal feature instances.")
-    
-    # Feature columns and target label
+    print(f"[*] Loaded {len(df)} spatio-temporal feature instances across all 12 months.")
+
     feature_cols = [
         "zone_id", "hour", "day_of_week", "is_weekend", "is_rush_hour",
-        "demand_trips", "avg_fare", "avg_miles", "avg_seconds", "avg_speed_mph"
+        "demand_trips", "dropoff_trips", "inflow_outflow_ratio", "demand_momentum", "avg_speed_mph"
     ]
-    target_col = "is_surge_above_1_5x"
+    target_col = "is_surge_in_20min"
 
-    # Clean data
     df_clean = df.dropna(subset=feature_cols + [target_col])
-    X = df_clean[feature_cols]
-    y = df_clean[target_col].astype(int)
 
-    surge_count = y.sum()
-    print(f"[*] Target Distribution: Total={len(y)} | Surge (>1.5x)={surge_count} ({surge_count/len(y)*100:.1f}%) | Normal={len(y)-surge_count}")
+    # Temporal split: Months 1-9 for Training, Months 10-12 for Out-of-Time Testing
+    df_clean["month"] = pd.to_datetime(df_clean["time_bucket"]).dt.month
+    train_mask = df_clean["month"] <= 9
+    test_mask = df_clean["month"] > 9
 
-    # Train / Test split (80/20)
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y if surge_count > 5 else None
-    )
+    X_train = df_clean.loc[train_mask, feature_cols]
+    y_train = df_clean.loc[train_mask, target_col].astype(int)
+    X_test = df_clean.loc[test_mask, feature_cols]
+    y_test = df_clean.loc[test_mask, target_col].astype(int)
+
+    print(f"[*] Temporal Split: Train (Jan-Sep)={len(X_train)} samples ({y_train.sum()} surges) | Test (Oct-Dec)={len(X_test)} samples ({y_test.sum()} surges)")
 
     # 1. Decision Tree Classifier (Interpretable baseline)
     print("\n-----------------------------------------------------------------")
     print(" 1. Decision Tree Classifier")
     print("-----------------------------------------------------------------")
-    dt = DecisionTreeClassifier(max_depth=5, class_weight="balanced", random_state=42)
+    dt = DecisionTreeClassifier(max_depth=6, class_weight="balanced", min_samples_split=20, random_state=42)
     dt.fit(X_train, y_train)
     y_pred_dt = dt.predict(X_test)
-    y_prob_dt = dt.predict_proba(X_test)[:, 1] if len(np.unique(y_train)) > 1 else y_pred_dt
+    y_prob_dt = dt.predict_proba(X_test)[:, 1]
 
     print(classification_report(y_test, y_pred_dt, target_names=["Normal (<1.5x)", "Surge (>=1.5x)"]))
-    if len(np.unique(y_test)) > 1:
-        print(f"ROC-AUC Score: {roc_auc_score(y_test, y_prob_dt):.4f}")
+    roc_dt = roc_auc_score(y_test, y_prob_dt)
+    print(f"Decision Tree ROC-AUC Score: {roc_dt:.4f}")
 
     # 2. Random Forest Classifier (Ensemble)
     print("\n-----------------------------------------------------------------")
     print(" 2. Random Forest Classifier (Ensemble)")
     print("-----------------------------------------------------------------")
-    rf = RandomForestClassifier(n_estimators=100, max_depth=8, class_weight="balanced", random_state=42)
+    rf = RandomForestClassifier(n_estimators=150, max_depth=10, class_weight="balanced", min_samples_split=15, n_jobs=-1, random_state=42)
     rf.fit(X_train, y_train)
-    y_pred_rf = rf.predict(X_test)
-    y_prob_rf = rf.predict_proba(X_test)[:, 1] if len(np.unique(y_train)) > 1 else y_pred_rf
+    y_prob_rf = rf.predict_proba(X_test)[:, 1]
 
+    # Standard 0.5 threshold
+    y_pred_rf = (y_prob_rf >= 0.5).astype(int)
+    print("Standard Threshold (0.50):")
     print(classification_report(y_test, y_pred_rf, target_names=["Normal (<1.5x)", "Surge (>=1.5x)"]))
-    if len(np.unique(y_test)) > 1:
-        print(f"ROC-AUC Score: {roc_auc_score(y_test, y_prob_rf):.4f}")
+    roc_rf = roc_auc_score(y_test, y_prob_rf)
+    print(f"Random Forest ROC-AUC Score: {roc_rf:.4f}")
+
+    # Tuned Threshold for High-Recall Pre-Positioning (Threshold = 0.35)
+    tuned_thresh = 0.35
+    y_pred_tuned = (y_prob_rf >= tuned_thresh).astype(int)
+    prec, rec, f1, _ = precision_recall_fscore_support(y_test, y_pred_tuned, average="binary")
+    print(f"\nTuned Threshold for Fleet Pre-Positioning ({tuned_thresh:.2f}):")
+    print(f"  - Recall (Surge Caught)    : {rec*100:.2f}% (Critical for pre-dispatching idle vehicles)")
+    print(f"  - Precision                : {prec*100:.2f}%")
+    print(f"  - F1-Score                 : {f1:.4f}")
 
     # Feature Importance Ranking
     print("\n-----------------------------------------------------------------")
@@ -82,18 +94,18 @@ def train_models(data_path: Path = PROCESSED_DATA_DIR / "features_labels.csv"):
     importances = rf.feature_importances_
     indices = np.argsort(importances)[::-1]
     for rank, idx in enumerate(indices):
-        print(f"  {rank+1:02d}. {feature_cols[idx]:<18} : {importances[idx]*100:.2f}%")
+        print(f"  {rank+1:02d}. {feature_cols[idx]:<22} : {importances[idx]*100:.2f}%")
 
-    # Save trained models
+    # Save models
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     dt_path = MODEL_DIR / "decision_tree_surge_model.pkl"
     rf_path = MODEL_DIR / "random_forest_surge_model.pkl"
     joblib.dump(dt, dt_path)
     joblib.dump(rf, rf_path)
     print(f"\n[] Saved serialized models to:")
-    print(f"    - {dt_path}")
-    print(f"    - {rf_path}")
+    print(f"    - {dt_path.relative_to(PROJECT_ROOT)}")
+    print(f"    - {rf_path.relative_to(PROJECT_ROOT)}")
     print("=================================================================")
 
 if __name__ == "__main__":
-    train_models()
+    train_baseline_models()
