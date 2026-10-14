@@ -22,8 +22,8 @@ fi
 
 mkdir -p "$PROJECT_DIR/data/processed"
 
-# Updated leak-free schema with 20-minute forward lookahead target
-echo "zone_id,time_bucket,hour,day_of_week,is_weekend,is_rush_hour,demand_trips,dropoff_trips,inflow_outflow_ratio,demand_momentum,avg_speed_mph,is_surge_in_20min" > "$OUTPUT_CSV"
+# Updated leak-free schema with net_deficit and 20-minute forward lookahead target
+echo "zone_id,time_bucket,hour,day_of_week,is_weekend,is_rush_hour,demand_trips,dropoff_trips,net_deficit,inflow_outflow_ratio,demand_momentum,avg_speed_mph,is_surge_in_20min" > "$OUTPUT_CSV"
 
 # Pipeline: CSV -> Mapper -> Sort (Shuffle) -> Reducer -> Output CSV
 cat "$INPUT_CSV" | "$PROJECT_DIR/mapreduce/mapper.py" | sort -k1,1n -k2,2 | "$PROJECT_DIR/mapreduce/reducer.py" >> "$OUTPUT_CSV"

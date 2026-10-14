@@ -43,7 +43,7 @@ def run_advanced_training(data_path: Path = PROCESSED_DATA_DIR / "features_label
     df = pd.read_csv(data_path)
     feature_cols = [
         "zone_id", "hour", "day_of_week", "is_weekend", "is_rush_hour",
-        "demand_trips", "dropoff_trips", "inflow_outflow_ratio", "demand_momentum", "avg_speed_mph"
+        "demand_trips", "dropoff_trips", "net_deficit", "inflow_outflow_ratio", "demand_momentum", "avg_speed_mph"
     ]
     target_col = "is_surge_in_20min"
 

@@ -36,6 +36,7 @@ def emit_bucket(b, next_b=None, prev_b=None):
 
     demand_trips = b["pickup_count"]
     dropoff_trips = b["dropoff_count"]
+    net_deficit = demand_trips - dropoff_trips
     inflow_outflow_ratio = round(dropoff_trips / max(1, demand_trips), 2)
 
     # Demand momentum: rate of change in demand relative to previous bucket
@@ -56,8 +57,8 @@ def emit_bucket(b, next_b=None, prev_b=None):
         is_surge_in_20min = 1 if b["avg_surge"] >= SURGE_THRESHOLD else 0
 
     # Output CSV Format:
-    # zone_id,time_bucket,hour,day_of_week,is_weekend,is_rush_hour,demand_trips,dropoff_trips,inflow_outflow_ratio,demand_momentum,avg_speed_mph,is_surge_in_20min
-    print(f"{zone_id},{time_bucket},{hour},{dow},{is_weekend},{is_rush_hour},{demand_trips},{dropoff_trips},{inflow_outflow_ratio},{demand_momentum},{avg_speed_mph:.2f},{is_surge_in_20min}")
+    # zone_id,time_bucket,hour,day_of_week,is_weekend,is_rush_hour,demand_trips,dropoff_trips,net_deficit,inflow_outflow_ratio,demand_momentum,avg_speed_mph,is_surge_in_20min
+    print(f"{zone_id},{time_bucket},{hour},{dow},{is_weekend},{is_rush_hour},{demand_trips},{dropoff_trips},{net_deficit},{inflow_outflow_ratio},{demand_momentum},{avg_speed_mph:.2f},{is_surge_in_20min}")
 
 def main():
     current_key = None

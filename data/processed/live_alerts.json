@@ -1,5 +1,1145 @@
 [
   {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 28,
+    "zone_name": "Near West Side",
+    "surge_probability": 0.5423,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 5,
+    "inflow_outflow_ratio": 0.4,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near West Side within 15 minutes.",
+      "target_zone": 28,
+      "target_zone_name": "Near West Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        },
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.34,
+          "estimated_transit_minutes": 7,
+          "incentive_bonus_per_driver": 6.42
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 28,
+    "zone_name": "Near West Side",
+    "surge_probability": 0.6883,
+    "estimated_multiplier": 1.15,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 4,
+    "inflow_outflow_ratio": 0.5,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near West Side within 15 minutes.",
+      "target_zone": 28,
+      "target_zone_name": "Near West Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        },
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.34,
+          "estimated_transit_minutes": 7,
+          "incentive_bonus_per_driver": 6.42
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.815,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Loop within 15 minutes.",
+      "target_zone": 32,
+      "target_zone_name": "Loop",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 56,
+    "zone_name": "Garfield Ridge (Midway Airport)",
+    "surge_probability": 0.7983,
+    "estimated_multiplier": 1.43,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 4,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Garfield Ridge (Midway Airport) within 15 minutes.",
+      "target_zone": 56,
+      "target_zone_name": "Garfield Ridge (Midway Airport)",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 64,
+          "donor_zone_name": "Clearing",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.1,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.88
+        },
+        {
+          "donor_zone_id": 65,
+          "donor_zone_name": "West Lawn",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.93,
+          "estimated_transit_minutes": 9,
+          "incentive_bonus_per_driver": 7.16
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 28,
+    "zone_name": "Near West Side",
+    "surge_probability": 0.7961,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near West Side within 15 minutes.",
+      "target_zone": 28,
+      "target_zone_name": "Near West Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        },
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.34,
+          "estimated_transit_minutes": 7,
+          "incentive_bonus_per_driver": 6.42
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 60,
+    "zone_name": "Bridgeport",
+    "surge_probability": 0.8019,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Bridgeport within 15 minutes.",
+      "target_zone": 60,
+      "target_zone_name": "Bridgeport",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 34,
+          "donor_zone_name": "Armour Square",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 0.85,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.56
+        },
+        {
+          "donor_zone_id": 59,
+          "donor_zone_name": "McKinley Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.25,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.06
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 56,
+    "zone_name": "Garfield Ridge (Midway Airport)",
+    "surge_probability": 0.8587,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 1.33,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Garfield Ridge (Midway Airport) within 15 minutes.",
+      "target_zone": 56,
+      "target_zone_name": "Garfield Ridge (Midway Airport)",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 64,
+          "donor_zone_name": "Clearing",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.1,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.88
+        },
+        {
+          "donor_zone_id": 65,
+          "donor_zone_name": "West Lawn",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.93,
+          "estimated_transit_minutes": 9,
+          "incentive_bonus_per_driver": 7.16
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 54,
+    "zone_name": "Riverdale",
+    "surge_probability": 0.7219,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Riverdale within 15 minutes.",
+      "target_zone": 54,
+      "target_zone_name": "Riverdale",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 53,
+          "donor_zone_name": "West Pullman",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 2.03,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 6.04
+        },
+        {
+          "donor_zone_id": 50,
+          "donor_zone_name": "Pullman",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.71,
+          "estimated_transit_minutes": 8,
+          "incentive_bonus_per_driver": 6.89
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 5,
+    "zone_name": "North Center",
+    "surge_probability": 0.5299,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to North Center within 15 minutes.",
+      "target_zone": 5,
+      "target_zone_name": "North Center",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 16,
+          "donor_zone_name": "Irving Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.29,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.11
+        },
+        {
+          "donor_zone_id": 4,
+          "donor_zone_name": "Lincoln Square",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.31,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.14
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 33,
+    "zone_name": "Near South Side",
+    "surge_probability": 0.8297,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near South Side within 15 minutes.",
+      "target_zone": 33,
+      "target_zone_name": "Near South Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 34,
+          "donor_zone_name": "Armour Square",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.2,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 5.0
+        },
+        {
+          "donor_zone_id": 35,
+          "donor_zone_name": "Douglas",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.57,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.46
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 6,
+    "zone_name": "Lake View",
+    "surge_probability": 0.7737,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Lake View within 15 minutes.",
+      "target_zone": 6,
+      "target_zone_name": "Lake View",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 7,
+          "donor_zone_name": "Lincoln Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.54,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.42
+        },
+        {
+          "donor_zone_id": 5,
+          "donor_zone_name": "North Center",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.83,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.79
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:06:00",
+    "zone_id": 24,
+    "zone_name": "West Town",
+    "surge_probability": 0.8053,
+    "estimated_multiplier": 1.12,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to West Town within 15 minutes.",
+      "target_zone": 24,
+      "target_zone_name": "West Town",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.7,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.62
+        },
+        {
+          "donor_zone_id": 27,
+          "donor_zone_name": "East Garfield Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.74,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.67
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:05:59",
+    "zone_id": 8,
+    "zone_name": "Near North Side",
+    "surge_probability": 0.807,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near North Side within 15 minutes.",
+      "target_zone": 8,
+      "target_zone_name": "Near North Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 7,
+          "donor_zone_name": "Lincoln Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.77,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.71
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:05:59",
+    "zone_id": 44,
+    "zone_name": "Chatham",
+    "surge_probability": 0.6873,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Chatham within 15 minutes.",
+      "target_zone": 44,
+      "target_zone_name": "Chatham",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 47,
+          "donor_zone_name": "Burnside",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.29,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.11
+        },
+        {
+          "donor_zone_id": 69,
+          "donor_zone_name": "Greater Grand Crossing",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.45,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.31
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:05:59",
+    "zone_id": 37,
+    "zone_name": "Fuller Park",
+    "surge_probability": 0.6048,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Fuller Park within 15 minutes.",
+      "target_zone": 37,
+      "target_zone_name": "Fuller Park",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 38,
+          "donor_zone_name": "Grand Boulevard",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 0.8,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.5
+        },
+        {
+          "donor_zone_id": 61,
+          "donor_zone_name": "New City",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.17,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.96
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 6,
+    "zone_name": "Lake View",
+    "surge_probability": 0.7027,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Lake View within 15 minutes.",
+      "target_zone": 6,
+      "target_zone_name": "Lake View",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 7,
+          "donor_zone_name": "Lincoln Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.54,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.42
+        },
+        {
+          "donor_zone_id": 5,
+          "donor_zone_name": "North Center",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.83,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.79
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 28,
+    "zone_name": "Near West Side",
+    "surge_probability": 0.8137,
+    "estimated_multiplier": 1.03,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Near West Side within 15 minutes.",
+      "target_zone": 28,
+      "target_zone_name": "Near West Side",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 32,
+          "donor_zone_name": "Loop",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        },
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.34,
+          "estimated_transit_minutes": 7,
+          "incentive_bonus_per_driver": 6.42
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.7515,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 4,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Loop within 15 minutes.",
+      "target_zone": 32,
+      "target_zone_name": "Loop",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 43,
+    "zone_name": "South Shore",
+    "surge_probability": 0.6953,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to South Shore within 15 minutes.",
+      "target_zone": 43,
+      "target_zone_name": "South Shore",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 45,
+          "donor_zone_name": "Avalon Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 42,
+          "donor_zone_name": "Woodlawn",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.81,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.76
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 22,
+    "zone_name": "Logan Square",
+    "surge_probability": 0.7463,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 4,
+    "inflow_outflow_ratio": 0.5,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Logan Square within 15 minutes.",
+      "target_zone": 22,
+      "target_zone_name": "Logan Square",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 21,
+          "donor_zone_name": "Avondale",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.08,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.85
+        },
+        {
+          "donor_zone_id": 20,
+          "donor_zone_name": "Hermosa",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.3,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.12
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 24,
+    "zone_name": "West Town",
+    "surge_probability": 0.789,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 4,
+    "inflow_outflow_ratio": 0.75,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to West Town within 15 minutes.",
+      "target_zone": 24,
+      "target_zone_name": "West Town",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.7,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.62
+        },
+        {
+          "donor_zone_id": 27,
+          "donor_zone_name": "East Garfield Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.74,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.67
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 58,
+    "zone_name": "Brighton Park",
+    "surge_probability": 0.773,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Brighton Park within 15 minutes.",
+      "target_zone": 58,
+      "target_zone_name": "Brighton Park",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 59,
+          "donor_zone_name": "McKinley Park",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.6,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.5
+        },
+        {
+          "donor_zone_id": 63,
+          "donor_zone_name": "Gage Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.65,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.56
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 56,
+    "zone_name": "Garfield Ridge (Midway Airport)",
+    "surge_probability": 0.7002,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 5,
+    "inflow_outflow_ratio": 0.4,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Garfield Ridge (Midway Airport) within 15 minutes.",
+      "target_zone": 56,
+      "target_zone_name": "Garfield Ridge (Midway Airport)",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 64,
+          "donor_zone_name": "Clearing",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.1,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.88
+        },
+        {
+          "donor_zone_id": 65,
+          "donor_zone_name": "West Lawn",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.93,
+          "estimated_transit_minutes": 9,
+          "incentive_bonus_per_driver": 7.16
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:09",
+    "zone_id": 35,
+    "zone_name": "Douglas",
+    "surge_probability": 0.6021,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Douglas within 15 minutes.",
+      "target_zone": 35,
+      "target_zone_name": "Douglas",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 34,
+          "donor_zone_name": "Armour Square",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 0.9,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.62
+        },
+        {
+          "donor_zone_id": 36,
+          "donor_zone_name": "Oakland",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.23,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 5.04
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:08",
+    "zone_id": 67,
+    "zone_name": "West Englewood",
+    "surge_probability": 0.7593,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to West Englewood within 15 minutes.",
+      "target_zone": 67,
+      "target_zone_name": "West Englewood",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 68,
+          "donor_zone_name": "Englewood",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.29,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.11
+        },
+        {
+          "donor_zone_id": 66,
+          "donor_zone_name": "Chicago Lawn",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.62,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.53
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:08",
+    "zone_id": 56,
+    "zone_name": "Garfield Ridge (Midway Airport)",
+    "surge_probability": 0.8483,
+    "estimated_multiplier": 1.79,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 4,
+    "inflow_outflow_ratio": 0.5,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Garfield Ridge (Midway Airport) within 15 minutes.",
+      "target_zone": 56,
+      "target_zone_name": "Garfield Ridge (Midway Airport)",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 64,
+          "donor_zone_name": "Clearing",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.1,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.88
+        },
+        {
+          "donor_zone_id": 65,
+          "donor_zone_name": "West Lawn",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.93,
+          "estimated_transit_minutes": 9,
+          "incentive_bonus_per_driver": 7.16
+        }
+      ],
+      "projected_multiplier_reduction": 0.59
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:08",
+    "zone_id": 24,
+    "zone_name": "West Town",
+    "surge_probability": 0.8331,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to West Town within 15 minutes.",
+      "target_zone": 24,
+      "target_zone_name": "West Town",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.7,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.62
+        },
+        {
+          "donor_zone_id": 27,
+          "donor_zone_name": "East Garfield Park",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.74,
+          "estimated_transit_minutes": 5,
+          "incentive_bonus_per_driver": 5.67
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:08",
+    "zone_id": 56,
+    "zone_name": "Garfield Ridge (Midway Airport)",
+    "surge_probability": 0.8767,
+    "estimated_multiplier": 1.07,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Garfield Ridge (Midway Airport) within 15 minutes.",
+      "target_zone": 56,
+      "target_zone_name": "Garfield Ridge (Midway Airport)",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 64,
+          "donor_zone_name": "Clearing",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.1,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.88
+        },
+        {
+          "donor_zone_id": 65,
+          "donor_zone_name": "West Lawn",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 2.93,
+          "estimated_transit_minutes": 9,
+          "incentive_bonus_per_driver": 7.16
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:08",
+    "zone_id": 32,
+    "zone_name": "Loop",
+    "surge_probability": 0.815,
+    "estimated_multiplier": 1.0,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 1.0,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Loop within 15 minutes.",
+      "target_zone": 32,
+      "target_zone_name": "Loop",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 8,
+          "donor_zone_name": "Near North Side",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.26,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.08
+        },
+        {
+          "donor_zone_id": 28,
+          "donor_zone_name": "Near West Side",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.9,
+          "estimated_transit_minutes": 6,
+          "incentive_bonus_per_driver": 5.88
+        }
+      ],
+      "projected_multiplier_reduction": 0.3
+    }
+  },
+  {
+    "timestamp": "2026-10-14 19:02:08",
+    "zone_id": 22,
+    "zone_name": "Logan Square",
+    "surge_probability": 0.7866,
+    "estimated_multiplier": 2.53,
+    "is_surge_warning": true,
+    "horizon_minutes": 20,
+    "demand_trips": 3,
+    "inflow_outflow_ratio": 0.67,
+    "dispatch_directive": {
+      "status": "REPOSITION_ACTIVE",
+      "message": "High Surge Risk: Dispatching 4 drivers to Logan Square within 15 minutes.",
+      "target_zone": 22,
+      "target_zone_name": "Logan Square",
+      "drivers_needed": 4,
+      "total_dispatched": 4,
+      "transfer_plan": [
+        {
+          "donor_zone_id": 21,
+          "donor_zone_name": "Avondale",
+          "drivers_to_dispatch": 3,
+          "distance_miles": 1.08,
+          "estimated_transit_minutes": 3,
+          "incentive_bonus_per_driver": 4.85
+        },
+        {
+          "donor_zone_id": 20,
+          "donor_zone_name": "Hermosa",
+          "drivers_to_dispatch": 1,
+          "distance_miles": 1.3,
+          "estimated_transit_minutes": 4,
+          "incentive_bonus_per_driver": 5.12
+        }
+      ],
+      "projected_multiplier_reduction": 0.8
+    }
+  },
+  {
     "timestamp": "2026-10-14 19:00:56",
     "zone_id": 76,
     "zone_name": "O'Hare International Airport",

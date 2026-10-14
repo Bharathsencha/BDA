@@ -83,6 +83,7 @@ class RollingZoneState:
         z = self.state.get(zone_id, {})
         d = z.get("demand_trips", 2)
         a = z.get("dropoff_trips", 2)
+        deficit = d - a
         ratio = round(a / max(1, d), 2)
         momentum = d - z.get("prev_demand", d)
         avg_speed = round(z.get("sum_speed", 36.0) / max(1, z.get("trip_count", 2)), 2)
@@ -95,6 +96,7 @@ class RollingZoneState:
             "is_rush_hour": is_rush,
             "demand_trips": d,
             "dropoff_trips": a,
+            "net_deficit": deficit,
             "inflow_outflow_ratio": ratio,
             "demand_momentum": momentum,
             "avg_speed_mph": avg_speed
