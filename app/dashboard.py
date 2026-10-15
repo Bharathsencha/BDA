@@ -1,10 +1,6 @@
 """
-Executive Predictive Dispatch Control Center: Chicago Ride-Hailing Surge Prediction.
-Architecture:
-- Tab 1: Live Predictive Dispatch & Chicago Geospatial Map (20-Minute Forward Lookahead)
-- Tab 2: Fleet Supply & Rebalancing Optimizer (Donor Zones, Transit ETAs, Incentive Bonusing)
-- Tab 3: Multi-Model Benchmark Lab (Random Forest, Gradient Boosting, Decision Tree, Logistic Regression)
-- Tab 4: Kafka Real-Time Stream Monitor (Live Streaming Telemetry & Event Ticker)
+Predictive Dispatch Center: Chicago Ride-Hailing Surge Multiplier Forecaster
+Clean, professional enterprise analytics interface.
 """
 import sys
 import os
@@ -34,95 +30,214 @@ from config.chicago_zones import CHICAGO_ZONE_COORDINATES, ZONE_ADJACENCY
 from ml.dispatch_optimizer import optimize_driver_repositioning
 
 st.set_page_config(
-    page_title="Surge Intelligence & Predictive Dispatch Center",
+    page_title="Chicago Ride-Hailing Surge Forecaster",
+    page_icon="🚘",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom High-End Professional Presentation Styling (Zero Emojis, Sleek Enterprise Theme)
+# Professional Enterprise CSS (Clean Slate, Refined Typography, Zero Neon)
 st.markdown("""
     <style>
-    .reportview-container .main .block-container {
-        padding-top: 1.5rem;
-        padding-bottom: 2rem;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    html, body, [class*="css"] {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    .header-card {
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.05) 0%, rgba(51, 65, 85, 0.08) 100%);
-        border: 1px solid rgba(148, 163, 184, 0.25);
-        border-radius: 10px;
-        padding: 16px 20px;
-        margin-bottom: 18px;
+
+    /* Streamlit block container padding */
+    .block-container {
+        padding-top: 1.5rem !important;
+        padding-bottom: 2rem !important;
+        max-width: 96% !important;
     }
-    .card-surge {
-        background-color: rgba(220, 38, 38, 0.08);
-        border: 1px solid rgba(220, 38, 38, 0.35);
-        border-left: 6px solid #DC2626;
+
+    /* Executive Clean Header */
+    .enterprise-header {
+        background-color: #FFFFFF;
+        border: 1px solid #E2E8F0;
         border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 14px;
-        color: inherit;
+        padding: 20px 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     }
-    .card-normal {
-        background-color: rgba(22, 163, 74, 0.08);
-        border: 1px solid rgba(22, 163, 74, 0.35);
-        border-left: 6px solid #16A34A;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 14px;
-        color: inherit;
+
+    .header-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #0F172A;
+        letter-spacing: -0.02em;
+        margin: 0;
     }
-    .status-badge-surge {
+
+    .header-subtitle {
+        font-size: 13px;
+        color: #64748B;
+        margin-top: 4px;
+        margin-bottom: 12px;
+    }
+
+    .meta-tag {
+        display: inline-block;
+        background-color: #F1F5F9;
+        border: 1px solid #E2E8F0;
+        border-radius: 4px;
+        padding: 3px 10px;
+        font-size: 11.5px;
+        font-weight: 500;
+        color: #475569;
+        margin-right: 8px;
+    }
+
+    .meta-tag strong {
+        color: #0F172A;
+    }
+
+    /* Status Alert Cards */
+    .status-card-surge {
+        background-color: #FEF2F2;
+        border: 1px solid #FECACA;
+        border-left: 4px solid #DC2626;
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin-bottom: 16px;
+    }
+
+    .status-card-normal {
+        background-color: #F0FDF4;
+        border: 1px solid #BBF7D0;
+        border-left: 4px solid #16A34A;
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin-bottom: 16px;
+    }
+
+    .status-label-surge {
+        display: inline-block;
         background-color: #DC2626;
         color: #FFFFFF;
-        padding: 4px 10px;
-        border-radius: 4px;
+        font-size: 10px;
         font-weight: 700;
-        font-size: 11px;
-        letter-spacing: 0.5px;
-        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 3px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
     }
-    .status-badge-normal {
+
+    .status-label-normal {
+        display: inline-block;
         background-color: #16A34A;
         color: #FFFFFF;
-        padding: 4px 10px;
-        border-radius: 4px;
+        font-size: 10px;
         font-weight: 700;
-        font-size: 11px;
-        letter-spacing: 0.5px;
-        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 3px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
     }
-    .chip-badge {
-        background-color: rgba(148, 163, 184, 0.12);
-        border: 1px solid rgba(148, 163, 184, 0.25);
-        border-radius: 6px;
-        padding: 6px 12px;
-        font-size: 12px;
-        color: inherit;
-        display: inline-block;
-        margin-right: 8px;
-        margin-top: 4px;
-    }
-    .directive-card {
-        background-color: rgba(59, 130, 246, 0.08);
-        border-left: 4px solid #3B82F6;
-        padding: 14px 16px;
-        border-radius: 6px;
-        margin-top: 10px;
-        color: inherit;
-        font-size: 13px;
-        line-height: 1.5;
-    }
-    .formula-card {
-        background-color: rgba(148, 163, 184, 0.08);
-        border: 1px solid rgba(148, 163, 184, 0.20);
+
+    /* Technical details box */
+    .spec-box {
+        background-color: #F8FAFC;
+        border: 1px solid #E2E8F0;
         border-radius: 6px;
         padding: 12px 14px;
         font-size: 12px;
-        color: inherit;
-        margin-top: 10px;
+        color: #475569;
+        line-height: 1.5;
+        margin-top: 12px;
+    }
+
+    .spec-box strong {
+        color: #0F172A;
+    }
+
+    /* Metric card refinements */
+    div[data-testid="stMetric"] {
+        background-color: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+        padding: 10px 14px !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03) !important;
+    }
+
+    div[data-testid="stMetricValue"] {
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        color: #0F172A !important;
+    }
+
+    div[data-testid="stMetricLabel"] {
+        font-size: 0.8rem !important;
+        font-weight: 500 !important;
+        color: #64748B !important;
+    }
+
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 6px;
+        background-color: #F1F5F9;
+        padding: 4px;
+        border-radius: 6px;
+        border: 1px solid #E2E8F0;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        border-radius: 4px;
+        color: #475569;
+        font-weight: 500;
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+
+    .stTabs [aria-selected="true"] {
+        background-color: #FFFFFF !important;
+        color: #2563EB !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     }
     </style>
 """, unsafe_allow_html=True)
+
+def apply_clean_chart_theme(fig, height=340):
+    """Applies a clean, readable corporate theme to Plotly figures."""
+    fig.update_layout(
+        template="plotly_white",
+        paper_bgcolor="#FFFFFF",
+        plot_bgcolor="#FFFFFF",
+        height=height,
+        margin=dict(l=20, r=20, t=30, b=20),
+        font=dict(
+            family="Inter, -apple-system, sans-serif",
+            color="#475569",
+            size=11
+        ),
+        legend=dict(
+            bgcolor="rgba(255,255,255,0.9)",
+            font=dict(color="#1E293B", size=11),
+            bordercolor="#E2E8F0",
+            borderwidth=1
+        ),
+        hoverlabel=dict(
+            bgcolor="#0F172A",
+            font_color="#FFFFFF",
+            font_size=11
+        )
+    )
+    fig.update_xaxes(
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="#F1F5F9",
+        zeroline=False,
+        linecolor="#CBD5E1"
+    )
+    fig.update_yaxes(
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="#F1F5F9",
+        zeroline=False,
+        linecolor="#CBD5E1"
+    )
+    return fig
 
 @st.cache_resource
 def load_models():
@@ -145,35 +260,33 @@ models = load_models()
 eval_summary = load_eval_summary()
 active_model = models.get("random_forest")
 
-# Top Header Card
+# Top Header Block
 st.markdown("""
-<div class="header-card">
-    <div style="font-size: 24px; font-weight: 800; letter-spacing: -0.5px;">
-        Ride-Hailing Surge Prediction & Predictive Dispatch Center
-    </div>
-    <div style="font-size: 13px; color: #64748B; margin-top: 4px; margin-bottom: 8px;">
-        Distributed Big Data Infrastructure: Apache Kafka Real-Time Stream -> Hadoop HDFS Cold Storage -> MapReduce Spatio-Temporal Feature ETL -> Ensemble Machine Learning
+<div class="enterprise-header">
+    <h1 class="header-title">Chicago Ride-Hailing Surge Forecaster & Dispatch Optimizer</h1>
+    <div class="header-subtitle">
+        Big Data Architecture: Apache Kafka Streaming &rarr; Hadoop HDFS Cold Storage &rarr; MapReduce Spatio-Temporal Feature ETL &rarr; Random Forest Classifier
     </div>
     <div>
-        <span class="chip-badge"><strong>Lead Time:</strong> 20 Minutes Forward</span>
-        <span class="chip-badge"><strong>Coverage:</strong> Chicago 77 Community Areas</span>
-        <span class="chip-badge"><strong>Target Leakage:</strong> 0% (Pre-Surge Operational Signals)</span>
-        <span class="chip-badge"><strong>Production Classifier:</strong> Random Forest Ensemble</span>
+        <span class="meta-tag"><strong>Prediction Horizon:</strong> 20 Minutes in Advance</span>
+        <span class="meta-tag"><strong>Geographic Scope:</strong> Chicago 77 Community Areas</span>
+        <span class="meta-tag"><strong>Feature Design:</strong> 0% Target Leakage (Physical Supply Deficits)</span>
+        <span class="meta-tag"><strong>Primary Model:</strong> Random Forest Classifier (ROC-AUC: 0.8124)</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# Sidebar: Controls & Scenario Presets
-st.sidebar.markdown("### Scenario Presets")
+# Sidebar Controls
+st.sidebar.markdown("### Operational Controls")
 preset = st.sidebar.selectbox(
-    "Quick Scenario Loader",
+    "Preconfigured Benchmark Scenarios",
     [
         "Friday Evening Rush (Loop - Zone 32)",
         "O'Hare Airport Flight Peak (Zone 76)",
         "Weekend Nightlife Surge (Lake View - Zone 06)",
         "Midway Airport Morning Inflow (Zone 56)",
         "Off-Peak Quiet Afternoon (Rogers Park - Zone 01)",
-        "Custom Manual Controls"
+        "Custom Manual Input"
     ]
 )
 
@@ -190,17 +303,14 @@ elif preset == "Off-Peak Quiet Afternoon (Rogers Park - Zone 01)":
 else:
     default_zone, default_hour, default_dow, default_p, default_d = 32, 17, 4, 28, 12
 
-st.sidebar.markdown("---")
-st.sidebar.markdown("### Operational Controls")
-
 zone_list = [f"{z:02d} - {CHICAGO_ZONE_COORDINATES[z]['name']} ({CHICAGO_ZONE_COORDINATES[z]['hub_type']})" for z in range(1, 78)]
-selected_zone_str = st.sidebar.selectbox("Target Chicago Community Zone", zone_list, index=default_zone - 1)
+selected_zone_str = st.sidebar.selectbox("Target Community Area", zone_list, index=default_zone - 1)
 selected_zone_id = int(selected_zone_str.split()[0])
 target_zone_meta = CHICAGO_ZONE_COORDINATES[selected_zone_id]
 
 col_s1, col_s2 = st.sidebar.columns(2)
 with col_s1:
-    hour_val = st.slider("Hour of Day", 0, 23, default_hour)
+    hour_val = st.slider("Hour (0-23)", 0, 23, default_hour)
 with col_s2:
     dow_options = ["Mon (0)", "Tue (1)", "Wed (2)", "Thu (3)", "Fri (4)", "Sat (5)", "Sun (6)"]
     dow_str = st.selectbox("Day of Week", dow_options, index=default_dow)
@@ -210,19 +320,17 @@ is_wknd = 1 if dow_val in [5, 6] else 0
 is_rush = 1 if hour_val in [7, 8, 9, 16, 17, 18, 19] and is_wknd == 0 else 0
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("### Pre-Surge Supply & Demand Balance")
+st.sidebar.markdown("### Physical Fleet Supply Dynamics")
 pickups_val = st.sidebar.slider("Pickups in Last 15 Min (Demand)", 0, 60, default_p)
 dropoffs_val = st.sidebar.slider("Dropoffs in Last 15 Min (Supply Arrivals)", 0, 60, default_d)
-speed_val = st.sidebar.slider("Average Zone Speed (mph)", 6.0, 35.0, 12.0 if is_rush else 22.0)
+speed_val = st.sidebar.slider("Zone Traffic Speed (mph)", 6.0, 35.0, 12.0 if is_rush else 22.0)
 
-st.sidebar.caption("Physical Balance: Increasing drop-offs adds available empty cars into the zone, relieving vehicle deficit and reducing surge risk.")
-
-# Physical Calculations
+# Physical balance formulas
 net_deficit = pickups_val - dropoffs_val
 supply_ratio = round(dropoffs_val / max(1, pickups_val), 2)
 momentum_val = max(-10, min(15, net_deficit // 2))
 
-# Build input vector for inference
+# Construct model feature vector
 input_vector = pd.DataFrame([{
     "zone_id": selected_zone_id,
     "hour": hour_val,
@@ -237,10 +345,9 @@ input_vector = pd.DataFrame([{
     "avg_speed_mph": speed_val
 }])
 
-# Evaluate Prediction with Supply Physics Calibration
+# Model inference with physical constraints
 if active_model is not None:
     raw_prob = float(active_model.predict_proba(input_vector)[0][1])
-    # Physics Constraint: When supply meets or exceeds demand, surge is eliminated
     if supply_ratio >= 1.0 or net_deficit <= 0:
         surge_prob = min(raw_prob, max(0.04, 0.20 - (supply_ratio - 1.0) * 0.15))
     else:
@@ -251,52 +358,50 @@ else:
 is_surge_alert = bool(surge_prob >= 0.35)
 est_multiplier = max(1.5, 1.25 + (surge_prob * 1.0)) if is_surge_alert else 1.0 + (surge_prob * 0.35)
 
-# Main Navigation Tabs (4 Complex, Feature-Rich Tabs)
+# Tabs
 tab_predict, tab_optimizer, tab_benchmark, tab_stream = st.tabs([
-    "1. Live Predictive Dispatch & Map",
-    "2. Fleet Supply & Rebalancing Optimizer",
-    "3. Multi-Model Benchmark Lab",
-    "4. Kafka Real-Time Stream Monitor"
+    "Real-Time Predictive Dispatch",
+    "Fleet Rebalancing Optimizer",
+    "Model Evaluation & Benchmarks",
+    "Kafka Stream Telemetry"
 ])
 
 # ==============================================================================
-# TAB 1: LIVE PREDICTIVE DISPATCH & MAP
+# TAB 1: REAL-TIME PREDICTIVE DISPATCH
 # ==============================================================================
 with tab_predict:
     col_pred1, col_pred2 = st.columns([1.15, 1.85])
 
     with col_pred1:
-        st.subheader("20-Minute Forward Prediction")
+        st.subheader("20-Minute Forward Forecast")
 
         if is_surge_alert:
             st.markdown(f"""
-            <div class="card-surge">
-                <div class="status-badge-surge">SURGE WARNING ACTIVE (>= 1.5x)</div>
-                <div style="font-size: 16px; font-weight: 800; color: #991B1B; margin-top: 8px;">
+            <div class="status-card-surge">
+                <span class="status-label-surge">Surge Warning Active (&ge; 1.5x)</span>
+                <div style="font-size: 16px; font-weight: 700; color: #991B1B; margin-top: 6px;">
                     Zone {selected_zone_id:02d}: {target_zone_meta['name']}
                 </div>
-                <div style="font-size: 13px; color: #7F1D1D; margin-top: 4px;">
-                    Predicted Multiplier: <strong>{est_multiplier:.2f}x</strong> | Advance Notice: <strong>20 Minutes</strong>
+                <div style="font-size: 13px; color: #7F1D1D; margin-top: 2px;">
+                    Estimated Multiplier: <strong>{est_multiplier:.2f}x</strong> &bull; Lead Time: <strong>20 Minutes</strong>
                 </div>
-                <hr style="margin: 8px 0; border-color: rgba(220, 38, 38, 0.25);">
-                <div style="font-size: 12px; color: #991B1B;">
-                    <strong>Impending Deficit:</strong> Pickup demand exceeds available supply by <strong>{max(0, net_deficit)}</strong> vehicles.
+                <div style="font-size: 12px; color: #991B1B; margin-top: 6px;">
+                    Pickup demand exceeds incoming vehicle arrivals by <strong>{max(0, net_deficit)}</strong> vehicles.
                 </div>
             </div>
             """, unsafe_allow_html=True)
         else:
             st.markdown(f"""
-            <div class="card-normal">
-                <div class="status-badge-normal">NORMAL PRICING (< 1.5x)</div>
-                <div style="font-size: 16px; font-weight: 800; color: #166534; margin-top: 8px;">
+            <div class="status-card-normal">
+                <span class="status-label-normal">Normal Pricing (&lt; 1.5x)</span>
+                <div style="font-size: 16px; font-weight: 700; color: #166534; margin-top: 6px;">
                     Zone {selected_zone_id:02d}: {target_zone_meta['name']}
                 </div>
-                <div style="font-size: 13px; color: #14532D; margin-top: 4px;">
-                    Projected Multiplier: <strong>{est_multiplier:.2f}x</strong> | Supply & Demand in Stable Balance
+                <div style="font-size: 13px; color: #14532D; margin-top: 2px;">
+                    Estimated Multiplier: <strong>{est_multiplier:.2f}x</strong> &bull; Market Equilibrium
                 </div>
-                <hr style="margin: 8px 0; border-color: rgba(22, 163, 74, 0.25);">
-                <div style="font-size: 12px; color: #166534;">
-                    <strong>Supply Status:</strong> Incoming drop-offs are sufficient to satisfy local passenger demand.
+                <div style="font-size: 12px; color: #166534; margin-top: 6px;">
+                    Incoming vehicle arrivals are sufficient to absorb local passenger demand.
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -309,36 +414,39 @@ with tab_predict:
         with m3:
             st.metric("Supply Ratio", f"{supply_ratio:.2f}")
 
-        # Gauge Meter
+        # Clean Gauge Indicator
         fig_g = go.Figure(go.Indicator(
             mode="gauge+number",
             value=surge_prob * 100,
             domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "20-Min Forward Surge Risk Index (%)", 'font': {'size': 13, 'color': '#334155'}},
+            title={'text': "Forward Surge Risk (%)", 'font': {'size': 12, 'color': '#475569'}},
             gauge={
-                'axis': {'range': [0, 100]},
+                'axis': {'range': [0, 100], 'tickcolor': '#94A3B8'},
                 'bar': {'color': "#DC2626" if is_surge_alert else "#16A34A"},
+                'bgcolor': "#F1F5F9",
+                'borderwidth': 1,
+                'bordercolor': "#CBD5E1",
                 'steps': [
                     {'range': [0, 35], 'color': "#DCFCE7"},
                     {'range': [35, 60], 'color': "#FEF3C7"},
                     {'range': [60, 100], 'color': "#FEE2E2"}
                 ],
-                'threshold': {'line': {'color': "#0F172A", 'width': 3}, 'thickness': 0.8, 'value': 35}
+                'threshold': {'line': {'color': "#0F172A", 'width': 2}, 'thickness': 0.75, 'value': 35}
             }
         ))
-        fig_g.update_layout(height=200, margin=dict(l=15, r=15, t=25, b=10))
+        fig_g = apply_clean_chart_theme(fig_g, height=185)
         st.plotly_chart(fig_g, use_container_width=True)
 
         st.markdown(f"""
-        <div class="formula-card">
-            <strong>Pre-Surge Operational Signals (Zero Fare Leakage):</strong><br>
+        <div class="spec-box">
+            <strong>Operational Signals (Non-Leaked Feature Space):</strong><br>
             Pickups: <strong>{pickups_val}</strong> | Dropoffs: <strong>{dropoffs_val}</strong> | Net Balance: <strong>{net_deficit:+d} vehicles</strong><br>
-            Velocity Index: <strong>{speed_val:.1f} mph</strong> | Demand Acceleration: <strong>{momentum_val:+d} trips/15m</strong>
+            Traffic Speed: <strong>{speed_val:.1f} mph</strong> | Demand Acceleration: <strong>{momentum_val:+d} trips/15m</strong>
         </div>
         """, unsafe_allow_html=True)
 
     with col_pred2:
-        st.subheader("Chicago 77 Community Areas Forward Risk Map")
+        st.subheader("Chicago 77 Community Areas Spatial Map")
 
         all_zones_data = []
         for z_id, meta in CHICAGO_ZONE_COORDINATES.items():
@@ -371,7 +479,7 @@ with tab_predict:
                 "lon": meta["lon"],
                 "hub_type": meta["hub_type"],
                 "surge_risk_pct": round(z_prob * 100, 1),
-                "marker_size": 22 if z_id == selected_zone_id else 10
+                "marker_size": 20 if z_id == selected_zone_id else 9
             })
 
         map_df = pd.DataFrame(all_zones_data)
@@ -387,10 +495,9 @@ with tab_predict:
                 range_color=[0, 100],
                 hover_name="name",
                 hover_data={"zone_id": True, "hub_type": True, "surge_risk_pct": True, "lat": False, "lon": False, "marker_size": False},
-                zoom=9.5,
-                center={"lat": 41.85, "lon": -87.68},
-                map_style="open-street-map",
-                title="Chicago 77 Community Areas Real-Time 20-Minute Advance Surge Risk Map"
+                zoom=9.6,
+                center={"lat": 41.86, "lon": -87.67},
+                map_style="carto-positron"
             )
         else:
             fig_map = px.scatter_mapbox(
@@ -403,20 +510,29 @@ with tab_predict:
                 range_color=[0, 100],
                 hover_name="name",
                 hover_data={"zone_id": True, "hub_type": True, "surge_risk_pct": True, "lat": False, "lon": False, "marker_size": False},
-                zoom=9.5,
-                center={"lat": 41.85, "lon": -87.68},
-                mapbox_style="carto-positron",
-                title="Chicago 77 Community Areas Real-Time 20-Minute Advance Surge Risk Map"
+                zoom=9.6,
+                center={"lat": 41.86, "lon": -87.67},
+                mapbox_style="carto-positron"
             )
-        fig_map.update_layout(height=450, margin=dict(l=0, r=0, t=30, b=0))
+        fig_map.update_layout(
+            height=440,
+            margin=dict(l=0, r=0, t=10, b=0),
+            coloraxis_colorbar=dict(
+                title="Risk %",
+                thickness=12,
+                len=0.75,
+                title_font=dict(color="#475569", size=11),
+                tickfont=dict(color="#475569", size=10)
+            )
+        )
         st.plotly_chart(fig_map, use_container_width=True)
 
 # ==============================================================================
-# TAB 2: FLEET SUPPLY & REBALANCING OPTIMIZER
+# TAB 2: FLEET REBALANCING OPTIMIZER
 # ==============================================================================
 with tab_optimizer:
-    st.subheader("Automated Fleet Supply & Rebalancing Optimizer")
-    st.write("Calculates optimal vehicle transfers from low-demand neighbor zones to high-surge target zones 20 minutes in advance.")
+    st.subheader("Proactive Fleet Supply & Rebalancing Solver")
+    st.caption("Calculates optimal driver repositioning quotas from neighboring donor zones 20 minutes prior to surge onset.")
 
     dispatch_res = optimize_driver_repositioning(
         target_zone_id=selected_zone_id,
@@ -425,47 +541,47 @@ with tab_optimizer:
         estimated_multiplier=est_multiplier
     )
 
-    opt_c1, opt_c2 = st.columns([1.2, 1.8])
+    opt_c1, opt_c2 = st.columns([1.1, 1.9])
 
     with opt_c1:
         st.markdown(f"**Target Zone**: Zone {selected_zone_id:02d} ({target_zone_meta['name']})")
         st.metric("Estimated Vehicle Deficit", f"{dispatch_res['drivers_needed']} Vehicles")
         st.metric("Total Recommended Dispatches", f"{dispatch_res.get('total_dispatched', 0)} Vehicles")
-        st.metric("Projected Surge Reduction", f"-{dispatch_res.get('projected_multiplier_reduction', 0.0):.2f}x")
+        st.metric("Projected Multiplier Relief", f"-{dispatch_res.get('projected_multiplier_reduction', 0.0):.2f}x")
 
         st.markdown(f"""
-        <div class="directive-card">
-            <strong>Optimal Dispatch Directive:</strong><br>
+        <div class="spec-box" style="border-left: 3px solid #2563EB;">
+            <strong>Dispatch Directive:</strong><br>
             {dispatch_res['message']}
         </div>
         """, unsafe_allow_html=True)
 
     with opt_c2:
-        st.markdown("**Transfer Schedule from Neighboring Donor Zones**")
+        st.markdown("**Transfer Schedule from Adjacent Donor Zones**")
         if dispatch_res["transfer_plan"]:
             plan_df = pd.DataFrame(dispatch_res["transfer_plan"])
-            plan_df.columns = ["Donor Zone ID", "Donor Zone Name", "Drivers To Dispatch", "Distance (Miles)", "ETA (Minutes)", "Incentive Bonus ($)"]
+            plan_df.columns = ["Donor Zone ID", "Donor Community Area", "Vehicles to Dispatch", "Distance (Miles)", "ETA (Min)", "Incentive Bonus ($)"]
             st.dataframe(plan_df, use_container_width=True, hide_index=True)
 
             fig_alloc = px.bar(
                 plan_df,
-                x="Donor Zone Name",
-                y="Drivers To Dispatch",
+                x="Donor Community Area",
+                y="Vehicles to Dispatch",
                 color="Incentive Bonus ($)",
-                title="Driver Reallocation by Neighboring Community Zone",
+                title="Driver Reallocation by Donor Community Area",
                 color_continuous_scale="Blues"
             )
-            fig_alloc.update_layout(height=260, margin=dict(l=10, r=10, t=30, b=10))
+            fig_alloc = apply_clean_chart_theme(fig_alloc, height=260)
             st.plotly_chart(fig_alloc, use_container_width=True)
         else:
-            st.info("No active vehicle rebalancing required. Supply and demand in this zone are currently balanced.")
+            st.info("Market balanced. No driver transfers currently required for this zone.")
 
 # ==============================================================================
-# TAB 3: MULTI-MODEL BENCHMARK LAB
+# TAB 3: MODEL EVALUATION & BENCHMARKS
 # ==============================================================================
 with tab_benchmark:
-    st.subheader("Machine Learning Multi-Model Performance Benchmark")
-    st.caption("Evaluated on 12-Month Out-of-Time Test Set (Oct-Dec 2023 | 32,873 Feature Vectors | Zero Target Leakage)")
+    st.subheader("Machine Learning Benchmark Suite")
+    st.caption("Evaluated on 12-Month Out-of-Time Temporal Test Set (October - December 2023 | 32,873 instances | Zero Target Leakage)")
 
     if eval_summary and "model_benchmarks" in eval_summary:
         benchmarks = eval_summary["model_benchmarks"]
@@ -474,10 +590,10 @@ with tab_benchmark:
         for model_name, metrics in benchmarks.items():
             summary_rows.append({
                 "Model Architecture": model_name,
-                "ROC-AUC Score": metrics["roc_auc"],
-                "F1 Score (0.50)": metrics["f1_score"],
-                "Recall (Standard 0.50)": f"{metrics['recall']*100:.1f}%",
-                "Recall (Tuned Cutoff 0.35)": f"{metrics.get('recall_tuned_35pct', metrics['recall'])*100:.1f}%",
+                "ROC-AUC": f"{metrics['roc_auc']:.4f}",
+                "F1 Score (0.50)": f"{metrics['f1_score']:.4f}",
+                "Recall (0.50)": f"{metrics['recall']*100:.1f}%",
+                "Recall (Tuned 0.35)": f"{metrics.get('recall_tuned_35pct', metrics['recall'])*100:.1f}%",
                 "Precision (0.50)": f"{metrics['precision']*100:.1f}%"
             })
 
@@ -489,10 +605,16 @@ with tab_benchmark:
             st.markdown("**ROC Curves Comparison**")
             fig_roc = go.Figure()
             curves = eval_summary.get("curves", {})
+            palette = {"Random Forest": "#2563EB", "Gradient Boosting": "#059669", "Decision Tree": "#7C3AED", "Logistic Regression": "#D97706"}
             for m_name, c_data in curves.items():
-                fig_roc.add_trace(go.Scatter(x=c_data["fpr"], y=c_data["tpr"], mode='lines', name=m_name))
-            fig_roc.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash', color='gray'), name="Random Baseline"))
-            fig_roc.update_layout(xaxis_title="False Positive Rate", yaxis_title="True Positive Rate", height=320, margin=dict(l=10, r=10, t=20, b=10))
+                fig_roc.add_trace(go.Scatter(
+                    x=c_data["fpr"], y=c_data["tpr"],
+                    mode='lines', name=m_name,
+                    line=dict(width=2, color=palette.get(m_name, "#64748B"))
+                ))
+            fig_roc.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash', color='#CBD5E1', width=1.5), name="Random (0.50)"))
+            fig_roc.update_layout(xaxis_title="False Positive Rate", yaxis_title="True Positive Rate")
+            fig_roc = apply_clean_chart_theme(fig_roc, height=310)
             st.plotly_chart(fig_roc, use_container_width=True)
 
         with b_col2:
@@ -500,47 +622,44 @@ with tab_benchmark:
             feat_imp = eval_summary.get("feature_importance", {})
             if feat_imp:
                 f_df = pd.DataFrame(list(feat_imp.items()), columns=["Feature", "Importance"]).sort_values(by="Importance", ascending=True)
-                fig_f = px.bar(f_df, x="Importance", y="Feature", orientation="h", color="Importance", color_continuous_scale="Teal")
-                fig_f.update_layout(height=320, margin=dict(l=10, r=10, t=20, b=10))
+                fig_f = px.bar(f_df, x="Importance", y="Feature", orientation="h", color="Importance", color_continuous_scale="Blues")
+                fig_f = apply_clean_chart_theme(fig_f, height=310)
                 st.plotly_chart(fig_f, use_container_width=True)
     else:
         st.warning("Benchmark metrics not yet computed. Run ml/advanced_training.py to generate summary.")
 
 # ==============================================================================
-# TAB 4: KAFKA REAL-TIME STREAM MONITOR
+# TAB 4: KAFKA STREAM TELEMETRY
 # ==============================================================================
 with tab_stream:
-    st.subheader("Kafka Real-Time Streaming Ingestion & Inference Stream")
-    st.markdown("""
-    This monitor tracks live ride-request events arriving on Kafka topic `ride-requests`
-    and displays 20-minute forward lookahead surge alerts emitted to topic `surge-alerts`.
-    """)
+    st.subheader("Apache Kafka Real-Time Stream Ingestion & Alert Feed")
+    st.caption("Consumes streaming ride-request events and records 20-minute forward surge warnings emitted to `surge-alerts`.")
 
     live_alerts_p = PROCESSED_DATA_DIR / "live_alerts.json"
 
-    if st.button("Trigger Streaming Ingestion Batch (15 Events)"):
-        with st.spinner("Processing streaming events through 20-min forward lookahead engine..."):
+    if st.button("Trigger Live Ingestion Batch (15 Events)", type="primary"):
+        with st.spinner("Ingesting ride requests and evaluating 20-minute forward lookahead..."):
             from streaming_inference.stream_processor import run_live_stream_inference
             run_live_stream_inference(max_iterations=15, delay_sec=0.03)
-            st.success("Successfully ingested 15 streaming events and evaluated 20-minute forward alerts.")
+            st.success("Successfully ingested 15 streaming events and published forward alerts.")
 
     if live_alerts_p.exists():
         with open(live_alerts_p, "r") as fp:
             alerts_list = json.load(fp)
 
         if alerts_list:
-            st.markdown(f"**Latest Streaming Events Ingested ({len(alerts_list)} Records)**")
+            st.markdown(f"**Live Alert Event Ticker ({len(alerts_list)} Records)**")
             stream_table = []
-            for a in alerts_list[:20]:
+            for a in alerts_list[:25]:
                 stream_table.append({
                     "Timestamp": a["timestamp"],
                     "Zone ID": f"{a['zone_id']:02d}",
                     "Community Area": a["zone_name"],
                     "Forward Risk": f"{a['surge_probability']*100:.1f}%",
                     "Est. Multiplier": f"{a['estimated_multiplier']:.2f}x",
-                    "Lead Horizon": f"{a.get('horizon_minutes', 20)} Minutes",
-                    "Alert Status": "SURGE WARNING (>=1.5x in 20m)" if a["is_surge_warning"] else "NORMAL PRICING"
+                    "Lead Horizon": f"{a.get('horizon_minutes', 20)} Min",
+                    "Alert Status": "SURGE WARNING (>= 1.5x)" if a["is_surge_warning"] else "NORMAL PRICING"
                 })
             st.dataframe(pd.DataFrame(stream_table), use_container_width=True, hide_index=True)
     else:
-        st.info("No live streaming events recorded yet. Click the button above to simulate incoming streaming traffic.")
+        st.info("No live streaming events recorded. Click the button above to simulate incoming streaming traffic.")
